@@ -9,7 +9,6 @@ import org.apache.hadoop.hbase.util.Bytes;
  * 两个字符串首字母不同，则该方法返回首字母的asc码的差值
  * 参与比较的两个字符串如果首字符相同，则比较下一个字符，直到有不同的为止，返回该不同的字符的asc码差值
  * 两个字符串不一样长，可以参与比较的字符又完全一样，则返回两个字符串的长度差值
- * 返回值：0，-1，1
  */
 public class BinaryComparatorDemo {
 
