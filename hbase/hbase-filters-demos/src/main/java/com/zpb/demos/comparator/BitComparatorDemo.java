@@ -11,13 +11,14 @@ public class BitComparatorDemo {
 
     public static void main(String[] args) {
 
-        BitComparator bc = new BitComparator(Bytes.toBytes("20200412"), BitComparator.BitwiseOp.OR);
-
-        int i = bc.compareTo(Bytes.toBytes("20200412"), 0, 8);
+        BitComparator bc1 = new BitComparator(Bytes.toBytes("20200412"), BitComparator.BitwiseOp.OR);
+        int i = bc1.compareTo(Bytes.toBytes("20200412"), 0, 8);
         System.out.println(i); // 0
-        int j = bc.compareTo(Bytes.toBytes("20200413"), 0, 8);
+        BitComparator bc2 = new BitComparator(Bytes.toBytes("20200413"), BitComparator.BitwiseOp.AND);
+        int j = bc2.compareTo(Bytes.toBytes("20200413"), 0, 8);
         System.out.println(j); // 0
-        int x = bc.compareTo(Bytes.toBytes("20200415"), 0, 8);
+        BitComparator bc3 = new BitComparator(Bytes.toBytes("20200413"), BitComparator.BitwiseOp.XOR);
+        int x = bc3.compareTo(Bytes.toBytes("20200414"), 0, 8);
         System.out.println(x); // 0
 
     }
