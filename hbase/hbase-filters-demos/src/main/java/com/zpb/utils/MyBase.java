@@ -52,9 +52,9 @@ public class MyBase {
         }
 
         if (admin.tableExists(TableName.valueOf(tableName))) {
-            System.out.print("Table has exists.");
+            System.out.println("Table is exists.");
         } else {
-            System.out.print("Creating table. ");
+            System.out.println("Creating table. ");
             admin.createTable(table);
         }
         admin.close();
@@ -63,9 +63,13 @@ public class MyBase {
     // 删表
     public void deleteTable(Connection connection, String tableName) throws IOException {
         Admin admin = connection.getAdmin();
-        System.out.print("Delete table. ");
-        admin.disableTable(TableName.valueOf(tableName));
-        admin.deleteTable(TableName.valueOf(tableName));
+        if (admin.tableExists(TableName.valueOf(tableName))) {
+            System.out.print("Delete table. ");
+            admin.disableTable(TableName.valueOf(tableName));
+            admin.deleteTable(TableName.valueOf(tableName));
+        }else {
+            System.out.println("Table is not exists.");
+        }
         admin.close();
     }
 
