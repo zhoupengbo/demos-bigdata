@@ -36,32 +36,32 @@ public class RowFilterDemo {
 
         // BinaryComparator
         RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-ac]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-ab, row-abc, row-bc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-bc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER_OR_EQUAL, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-ac, row-bc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.LESS, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-ab, row-abc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.LESS_OR_EQUAL, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-ab, row-abc, row-ac]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-ab, row-abc, row-bc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-bc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER_OR_EQUAL, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-ac, row-bc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.LESS, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-ab, row-abc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.LESS_OR_EQUAL, new BinaryComparator(Bytes.toBytes("row-ac"))); // [row-ab, row-abc, row-ac]
 
         // BinaryPrefixComparator
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-ab, row-abc, row-ac]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-bc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-bc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER_OR_EQUAL, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-ab, row-abc, row-ac, row-bc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.LESS, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // []
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.LESS_OR_EQUAL, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-ab, row-abc, row-ac]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-ab, row-abc, row-ac]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-bc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-bc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER_OR_EQUAL, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-ab, row-abc, row-ac, row-bc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.LESS, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // []
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.LESS_OR_EQUAL, new BinaryPrefixComparator(Bytes.toBytes("row-a"))); // [row-ab, row-abc, row-ac]
 
         // SubstringComparator
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new SubstringComparator("ab")); // [row-ab, row-abc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new SubstringComparator("ab")); // [row-ac, row-bc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new SubstringComparator("ab")); // [row-ab, row-abc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new SubstringComparator("ab")); // [row-ac, row-bc]
 
         // RegexStringComparator
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new RegexStringComparator("abc")); // [row-ab, row-ac, row-bc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new RegexStringComparator("abc")); // [row-abc]
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new RegexStringComparator("a")); // [row-ab, row-abc, row-ac]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new RegexStringComparator("abc")); // [row-ab, row-ac, row-bc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new RegexStringComparator("abc")); // [row-abc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new RegexStringComparator("a")); // [row-ab, row-abc, row-ac]
 
         // RowFilter
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new NullComparator()); // []
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new NullComparator()); // [row-ab, row-abc, row-ac, row-bc]
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new NullComparator()); // []
+//        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.NOT_EQUAL, new NullComparator()); // [row-ab, row-abc, row-ac, row-bc]
 
         scan.setFilter(rowFilter);
         ResultScanner scanner = table.getScanner(scan);
