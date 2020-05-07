@@ -30,7 +30,7 @@ public class FamilyFilterDemo {
         Scan scan = new Scan();
 
         // BinaryComparator
-        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.EQUAL, new BinaryComparator(Bytes.toBytes("f1"))); // [row-1, row-2]
+//        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.EQUAL, new BinaryComparator(Bytes.toBytes("f1"))); // [row-1, row-2]
 //        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.NOT_EQUAL, new BinaryComparator(Bytes.toBytes("f1"))); // [row-3, row-4]
 //        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.GREATER, new BinaryComparator(Bytes.toBytes("f1"))); // [row-3, row-4]
 //        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.GREATER_OR_EQUAL, new BinaryComparator(Bytes.toBytes("f1"))); // [row-1, row-2, row-3, row-4]
@@ -53,6 +53,11 @@ public class FamilyFilterDemo {
 //        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.NOT_EQUAL, new RegexStringComparator("f")); // []
 //        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.EQUAL, new RegexStringComparator("f")); // [row-1, row-2, row-3, row-4]
 //        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.EQUAL, new RegexStringComparator("2")); // [row-3, row-4]
+
+        // NullComparator
+//        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.EQUAL, new NullComparator()); // []
+        FamilyFilter familyFilter = new FamilyFilter(CompareFilter.CompareOp.NOT_EQUAL, new NullComparator()); // [row-1, row-2, row-3, row-4]
+
 
         scan.setFilter(familyFilter);
         ResultScanner scanner = table.getScanner(scan);
