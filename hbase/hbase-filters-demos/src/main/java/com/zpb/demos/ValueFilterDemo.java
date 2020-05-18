@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * 用于过滤列族（通常在 Scan 过程中通过设定某些列族来实现该功能，而不是直接使用该过滤器）。
+ * 用于列值过滤。
  */
 public class ValueFilterDemo {
     private static boolean isok = false;
