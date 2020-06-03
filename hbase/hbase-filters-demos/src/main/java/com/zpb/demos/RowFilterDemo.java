@@ -14,6 +14,12 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ * 该过滤器用于根据rowkey进行过滤. 它需要一个运算符（等于，更大，不等于等）以及键的行和列限定符部分的byte []比较器.
+ * 可以使用WhileMatchFilter封装此过滤器，以添加更多控件.
+ * 可以使用FilterList组合多个过滤器.
+ * 如果需要扫描已知的行范围，请直接使用CellScanner startrow和endrow，而不要使用过滤器.
+ */
 public class RowFilterDemo {
 
     private static boolean isok = false;
