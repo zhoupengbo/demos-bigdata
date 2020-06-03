@@ -14,6 +14,10 @@ import java.util.LinkedList;
 
 /**
  * 用于列值过滤。
+ * 该过滤器用于根据列值进行过滤. 它需要一个运算符（等于，更大，不等于等）和一个字节[]比较器作为单元格值.
+ * 该过滤器可以使用WhileMatchFilter和SkipFilter进行包装，以添加更多控件.
+ * 可以使用FilterList组合多个过滤器.
+ * 要在扫描多个限定符时测试单个限定符的值，请使用SingleColumnValueFilter .
  */
 public class ValueFilterDemo {
     private static boolean isok = false;
