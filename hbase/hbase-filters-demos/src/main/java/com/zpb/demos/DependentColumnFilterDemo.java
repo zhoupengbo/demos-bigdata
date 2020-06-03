@@ -14,11 +14,13 @@ import java.util.LinkedList;
 
 /**
  * 参考例过滤器
+ * 用于添加列间时间戳匹配的过滤器将仅保留目标列中具有相应时间戳的条目的单元格与Scan.setBatch不兼容，因为操作需要完整的行才能进行正确过滤
  * 一种允许用户指定一个参考列或引用列来过滤其他列的过滤器，过滤的原则是基于参考列的时间戳来进行筛选 。
  * 该过滤器尝试找到该列所在的每一行，并返回该行具有相同时间戳的全部键值对。
  * 如果某行不包含这个指定的列，则什么都不返回。
  * dropDependentColumn: 决定参考列被返回还是丢弃，为true时表示参考列被返回，为false时表示被丢弃。
  * 可以把DependentColumnFilter理解为一个valueFilter和一个时间戳过滤器的组合。
+ *
  */
 public class DependentColumnFilterDemo {
 
