@@ -12,6 +12,10 @@ import java.util.LinkedList;
 
 /**
  * 用于过滤列族（通常在 Scan 过程中通过设定某些列族来实现该功能，而不是直接使用该过滤器）。
+ * 该过滤器用于基于列族进行过滤. 键的列族部分需要一个运算符（等于，更大，不等于等）和一个字节[]比较器.
+ * 该过滤器可以使用WhileMatchFilter和SkipFilter进行包装，以添加更多控件.
+ * 可以使用FilterList组合多个过滤器.
+ * 如果要查找已知的列族，请直接使用Get.addFamily(byte[])而不是过滤器.
  */
 public class FamilyFilterDemo {
 
