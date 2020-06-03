@@ -14,6 +14,10 @@ import java.util.LinkedList;
 
 /**
  * 用于列名（Qualifier）过滤。
+ * 该过滤器用于基于列限定符进行过滤. 它需要一个运算符（等于，更大，不等于等）和一个键的列限定符部分的byte []比较器.
+ * 该过滤器可以使用WhileMatchFilter和SkipFilter进行包装，以添加更多控件.
+ * 可以使用FilterList组合多个过滤器.
+ * 如果要查找已知的列限定符，请直接使用Get.addColumn(byte[], byte[])而不是过滤器.
  */
 public class QualifierFilterDemo {
 
