@@ -23,10 +23,12 @@ import java.util.LinkedList;
  */
 public class FirstKeyOnlyFilterDemo {
 
-    private static boolean isok = false;
+    private static boolean isok = true;
     private static String tableName = "test";
     private static String[] cfs = new String[]{"f1","f2"};
-    private static String[] data = new String[]{"row-1:f1:p:v1", "row-1:f1:pre:v2", "row-1:f2:pref:v3", "row-1:f2:prefix:v4"};
+    private static String[] data = new String[]{
+            "row-1:f1:p:v1", "row-1:f1:pre:v2", "row-2:f2:pref:v3", "row-2:f2:prefix:v4"
+    };
     public static void main(String[] args) throws IOException {
 
         MyBase myBase = new MyBase();
@@ -39,7 +41,7 @@ public class FirstKeyOnlyFilterDemo {
         }
         Table table = connection.getTable(TableName.valueOf(tableName));
         Scan scan = new Scan();
-        FirstKeyOnlyFilter firstKeyOnlyFilter = new FirstKeyOnlyFilter(); // [row-1:f1:p]
+        FirstKeyOnlyFilter firstKeyOnlyFilter = new FirstKeyOnlyFilter(); // [row-1:f1:p, row-2:f2:pref]
         scan.setFilter(firstKeyOnlyFilter);
         ResultScanner scanner = table.getScanner(scan);
         Iterator<Result> iterator = scanner.iterator();
