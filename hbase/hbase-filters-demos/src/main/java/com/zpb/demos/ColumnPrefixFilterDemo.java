@@ -15,7 +15,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * 根据列名前缀过滤匹配列数据
+ * 根据列名前缀过滤匹配列数据(该功能用QualifierFilter也能实现)
+ * 注意：一个列名是可以出现在多个列族中的，该过滤器将返回所有列族中匹配的列。
+ * scan 'test',{FILTER=>"ColumnPrefixFilter('ag')"}
  */
 public class ColumnPrefixFilterDemo {
 
