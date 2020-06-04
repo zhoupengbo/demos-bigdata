@@ -23,6 +23,8 @@ import java.util.LinkedList;
  * minColumnInclusive - 列范围是否包含minColumn
  * maxColumn - 列范围最大值，如果为空，则没有上限
  * maxColumnInclusive - 列范围是否包含maxColumn
+ *
+ * scan 'test',{FILTER=>"ColumnRangeFilter('a',true,'c',false)"}
  */
 public class ColumnRangeFilterDemo {
     private static boolean isok = false;
