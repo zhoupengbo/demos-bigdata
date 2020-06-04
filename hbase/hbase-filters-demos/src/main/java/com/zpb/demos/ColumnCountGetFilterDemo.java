@@ -16,9 +16,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * 简单过滤器，仅返回行的前N列. 此过滤器被编写为在Get中测试过滤器，并
- * 且一旦获得其列配额， filterAllRemaining()返回true.
+ * 简单过滤器，仅返回行的前N列. 此过滤器被编写为在Get中测试过滤器，
+ * 并且一旦获得其列配额， filterAllRemaining()返回true.
  * 这使得此过滤器不适合作为"扫描"过滤器.
+ *
+ * scan 'test',{FILTER=>"ColumnCountGetFilter(2)"}
  */
 public class ColumnCountGetFilterDemo {
     private static boolean isok = false;
