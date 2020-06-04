@@ -14,9 +14,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * 宽行读取过滤条件，适用于filter。宽表分页读取列。
+ * 宽行读取过滤条件，适用于filter。根据limit和offset得到数据,宽表分页读取列。
  * 基于ColumnCountGetFilter的过滤器采用两个参数：limit和offset.
  * 该过滤器可用于基于行的索引，其中对其他表的引用存储在许多列中，以便为最终用户进行有效的查找和分页结果. 仅将最新版本视为分页.
+ *
+ *  scan 'test',{FILTER=>"ColumnPaginationFilter(1,2)"}
  */
 public class ColumnPaginationFilterDemo {
     private static boolean isok = false;
