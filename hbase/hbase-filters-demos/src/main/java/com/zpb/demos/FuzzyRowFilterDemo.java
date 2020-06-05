@@ -45,10 +45,10 @@ public class FuzzyRowFilterDemo {
         Scan scan = new Scan();
         List<Pair<byte[], byte[]>> pairs = Arrays.asList(
                 new Pair<byte[], byte[]>(
-                        Bytes.toBytesBinary("????-23-abc-??"),
+                        Bytes.toBytes("????-23-abc-??"),
                         new byte[]{1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1}),
                 new Pair<byte[], byte[]>(
-                        Bytes.toBytesBinary("????-10-abc-??"),
+                        Bytes.toBytes("????-10-abc-??"),
                         new byte[]{1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1})
         );
         FuzzyRowFilter fuzzyRowFilter = new FuzzyRowFilter(pairs); // [test-10-abc-01:f1:p, test-23-abc-01:f1:p]
