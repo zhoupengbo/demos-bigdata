@@ -66,8 +66,11 @@ public class ValueFilterDemo {
 
         // NullComparator
 //        ValueFilter valueFilter = new ValueFilter(CompareFilter.CompareOp.EQUAL, new NullComparator()); // []
-        ValueFilter valueFilter = new ValueFilter(CompareFilter.CompareOp.NOT_EQUAL, new NullComparator()); // [row-1:f1:c1:abcdefg, row-2:f1:c2:abc, row-3:f2:c3:abc123456, row-4:f2:c4:1234abc567]
+//        ValueFilter valueFilter = new ValueFilter(CompareFilter.CompareOp.NOT_EQUAL, new NullComparator()); // [row-1:f1:c1:abcdefg, row-2:f1:c2:abc, row-3:f2:c3:abc123456, row-4:f2:c4:1234abc567]
 
+        // LongComparator
+        ValueFilter valueFilter = new ValueFilter(CompareFilter.CompareOp.EQUAL, new LongComparator(100L)); // [row-1:f1:c1:abcdefg, row-2:f1:c2:abc, row-3:f2:c3:abc123456, row-4:f2:c4:1234abc567]
+//        ValueFilter valueFilter = new ValueFilter(CompareFilter.CompareOp.NOT_EQUAL, new LongComparator(100L)); // [row-1:f1:c1:abcdefg, row-2:f1:c2:abc, row-3:f2:c3:abc123456, row-4:f2:c4:1234abc567]
 
         scan.setFilter(valueFilter);
         ResultScanner scanner = table.getScanner(scan);
