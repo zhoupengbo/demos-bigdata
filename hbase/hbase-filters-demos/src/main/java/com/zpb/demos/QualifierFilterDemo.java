@@ -9,8 +9,7 @@ import org.apache.hadoop.hbase.filter.*;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * 用于列名（Qualifier）过滤。
@@ -23,12 +22,19 @@ public class QualifierFilterDemo {
 
     private static boolean isok = false;
     private static String tableName = "test";
-    private static String[] cfs = new String[]{"f"};
+    private static String[] cfs = new String[]{"f","f2"};
     private static String[] data = new String[]{
             "row-1:f:name:Wang", "row-1:f:age:20",
             "row-2:f:name:Zhou", "row-2:f:age:10",
             "row-3:f:gender:男", "row-3:f:name:Li",
-            "row-4:f:namana:xyz", "row-4:f:age:Zhao"
+            "row-5:f:gender:男", "row-5:f:name:Li",
+            "row-5:f2:1234:xyz1","row-3:f:gender:女",
+            "row-5:f2:1235:xyz2",
+            "row-5:f2:1236:xyz3",
+            "row-5:f2:1237:xyz4",
+            "row-5:f2:1238:xyz5",
+            "row-5:f2:1239:xyz6",
+            "row-5:f2:12361:xyz7"
     };
 
     public static void main(String[] args) throws IOException {
@@ -42,6 +48,9 @@ public class QualifierFilterDemo {
             myBase.putRows(connection, tableName, data);
         }
         Table table = connection.getTable(TableName.valueOf(tableName));
+        Get get = new Get(Bytes.toBytes("row-3"));
+        get.addFamily(Bytes.toBytes("f"));
+
         Scan scan = new Scan();
 
         // BinaryComparator
@@ -49,6 +58,7 @@ public class QualifierFilterDemo {
 //        QualifierFilter qualifierFilter = new QualifierFilter(CompareFilter.CompareOp.NOT_EQUAL, new BinaryComparator(Bytes.toBytes("name"))); // [row-1:f:age, row-2:f:age, row-3:f:gender, row-4:f:age, row-4:f:namana]
 //        QualifierFilter qualifierFilter = new QualifierFilter(CompareFilter.CompareOp.GREATER, new BinaryComparator(Bytes.toBytes("gender"))); // [row-1:f:name, row-2:f:name, row-3:f:name, row-4:f:namana]
 //        QualifierFilter qualifierFilter = new QualifierFilter(CompareFilter.CompareOp.GREATER_OR_EQUAL, new BinaryComparator(Bytes.toBytes("name"))); // [row-1:f:name, row-2:f:name, row-3:f:name]
+        QualifierFilter qualifierFilter = new QualifierFilter(CompareFilter.CompareOp.GREATER_OR_EQUAL, new BinaryComparator(Bytes.toBytes("1235")));
 //        QualifierFilter qualifierFilter = new QualifierFilter(CompareFilter.CompareOp.LESS, new BinaryComparator(Bytes.toBytes("gender"))); // [row-1:f:age, row-2:f:age, row-4:f:age]
 //        QualifierFilter qualifierFilter = new QualifierFilter(CompareFilter.CompareOp.LESS_OR_EQUAL, new BinaryComparator(Bytes.toBytes("gender"))); // [row-1:f:age, row-2:f:age, row-3:f:gender, row-4:f:age]
 
@@ -71,7 +81,23 @@ public class QualifierFilterDemo {
 
         // NullComparator
 //        QualifierFilter qualifierFilter = new QualifierFilter(CompareFilter.CompareOp.EQUAL, new NullComparator()); // []
-        QualifierFilter qualifierFilter = new QualifierFilter(CompareFilter.CompareOp.NOT_EQUAL, new NullComparator()); // [row-1:f:age, row-1:f:name, row-2:f:age, row-2:f:name, row-3:f:gender, row-3:f:name, row-4:f:age, row-4:f:namana]
+//        QualifierFilter qualifierFilter = new QualifierFilter(CompareFilter.CompareOp.NOT_EQUAL, new NullComparator()); // [row-1:f:age, row-1:f:name, row-2:f:age, row-2:f:name, row-3:f:gender, row-3:f:name, row-4:f:age, row-4:f:namana]
+
+        get.setFilter(qualifierFilter);
+        Result getResult = table.get(get);
+        List<Cell> cells = getResult.listCells();
+        HashMap<String, String> map = new HashMap<>();
+        String cname = "cname";
+        for (Cell cell : cells) {
+            byte[] rowkey = CellUtil.cloneRow(cell);
+            byte[] family = CellUtil.cloneFamily(cell);
+            byte[] column = CellUtil.cloneQualifier(cell);
+            byte[] value = CellUtil.cloneValue(cell);
+            map.put(cname,Bytes.toString(value));
+            String key = Bytes.toString(rowkey) + ":" + Bytes.toString(family) + ":" + Bytes.toString(column) + ":" + Bytes.toString(value);
+            System.out.println(key);
+        }
+        System.out.println(map.get(cname));
 
         scan.setFilter(qualifierFilter);
         ResultScanner scanner = table.getScanner(scan);
