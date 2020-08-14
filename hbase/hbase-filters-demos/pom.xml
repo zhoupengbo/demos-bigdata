@@ -14,7 +14,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.version>4.11</junit.version>
-        <hdp.hbase.version>1.1.2.2.6.5.0-292</hdp.hbase.version>
+        <hbase.version>2.2.5</hbase.version>
     </properties>
 
     <dependencies>
@@ -25,11 +25,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase-shaded-client -->
         <dependency>
             <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-client</artifactId>
-            <version>${hdp.hbase.version}</version>
+            <artifactId>hbase-shaded-client</artifactId>
+            <version>${hbase.version}</version>
         </dependency>
+
     </dependencies>
 
 
@@ -45,88 +47,7 @@
                     <encoding>utf-8</encoding>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
-
-    <!--maven 源加速-->
-    <repositories>
-        <repository>
-            <id>nexus-aliyun</id>
-            <name>Nexus aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>hortonworks.extrepo</id>
-            <name>Hortonworks HDP</name>
-            <url>http://repo.hortonworks.com/content/repositories/releases</url>
-        </repository>
-
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>hortonworks.other</id>
-            <name>Hortonworks Other Dependencies</name>
-            <url>http://repo.hortonworks.com/content/groups/public</url>
-        </repository>
-    </repositories>
-
-    <!--maven插件源加速-->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus-aliyun</id>
-            <name>Nexus aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </pluginRepository>
-        <pluginRepository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>hortonworks.extrepo</id>
-            <name>Hortonworks HDP</name>
-            <url>http://repo.hortonworks.com/content/repositories/releases</url>
-        </pluginRepository>
-
-        <pluginRepository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>hortonworks.other</id>
-            <name>Hortonworks Other Dependencies</name>
-            <url>http://repo.hortonworks.com/content/groups/public</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
