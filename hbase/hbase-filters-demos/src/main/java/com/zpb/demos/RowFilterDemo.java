@@ -22,7 +22,7 @@ import java.util.LinkedList;
  */
 public class RowFilterDemo {
 
-    private static boolean isok = false;
+    private static boolean isok = true;
     private static String tableName = "test";
     private static String[] cfs = new String[]{"f"};
     private static String[] data = new String[]{"row-ac:f:c1:v1", "row-ab:f:c2:v2", "row-bc:f:c3:v3", "row-abc:f:c4:v4"};
